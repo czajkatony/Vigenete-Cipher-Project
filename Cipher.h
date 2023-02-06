@@ -17,7 +17,7 @@ public:
     string Encrypt(string plainText, string key);
     void RemoveSpaces(string* string);
     string Decrypt(string cipherText, string key);
-    ~Cipher();
+    ~Cipher(); // Need to Create Definition for this
 };
 #endif
 
