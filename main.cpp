@@ -2,6 +2,7 @@
 #include <string>
 #include "Cipher.h"
 #include "Pass.h"
+#include <chrono>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int main(){
     bool askMessage = false;
     while (decision != 4) {
         if(askMessage){
-            cout<<"1) Encrypt plaintext\n2)Decrypt ciphertext\n3)Brute Force\n4)Exit";
+            cout<<"1)Encrypt plaintext\n2)Decrypt ciphertext\n3)Brute Force\n4)Exit";
             cout<<"\nChoose option: ";
             cin>> decision;
         }
@@ -48,7 +49,22 @@ int main(){
             cout<<"Here is the decrypted message: "<< result<<endl;
         }
         else if(decision == 3){
-            cout<<"Brute force placeholder.\n";
+            string ct;
+            int kl;
+            int fwdl;
+            cout<< "Enter cyphertext: ";
+            cin.ignore();
+            getline(cin, ct);
+            cout<<"Enter Key Length: ";
+            cin>>kl;
+            cout<<"Enter First Word Length: ";
+            cin>>fwdl;
+            Pass crack(ct, kl, fwdl);
+            auto start = chrono::high_resolution_clock::now();
+            crack.BruteForce();
+            auto stop = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::seconds>(stop-start);
+            cout<<"\nBrute force time taken: "<<duration.count()<<" seconds\n";
         }       
         else if(decision !=4){
             cout<<"Invalid option chosen, please try again.\n";

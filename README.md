@@ -3,6 +3,10 @@
 
 Only input lowercase or capital **letters** for the plaintext and key, no punctuation.
 Do not enter numbers for anything other than the menu decision.
+> When pasting ciphertext into Brute Force function, there cannot be any newlines
+in the text until the end. If copying and pasting from a pdf, reformat in a txt
+file first!
+
 ## Purpose of this project
 This project was a way to implement a vigenere cipher to encode and decode messages.
 It also helped me learn how brute force attacks work, and how they are affected by a longer keylength
