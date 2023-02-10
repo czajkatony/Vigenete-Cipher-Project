@@ -6,13 +6,15 @@ Pass::Pass(string cT, int kL, int fWdL) :
     keyLength{kL},
     firstWordLength{fWdL},
     cipherText{cT}
-{
+{ 
     dictionary = {};
     ifstream file("MP1_dict.txt");
     if(file.is_open()){
         string str;
         while(file >> str){
-            dictionary.push_back(toLowerCase(str));
+            if(str.length() == firstWordLength){
+                dictionary.push_back(toLowerCase(str));
+            }
         }
         file.close();
     }
@@ -27,7 +29,6 @@ Pass::Pass(string cT, int kL, int fWdL) :
 void Pass::RecursiveIterator(string prefix, int keyL){
     if(keyL == 0){
         string tempString = cipher.Decrypt(cipherText, prefix);
-        // cout<<tempString<<endl;
         for (int i = 0; i < vectorSize; i++) {
             if (dictionary[i] == tempString.substr(0, firstWordLength)) {
                 std::cout << "Potential plaintext: " << tempString << '\n';

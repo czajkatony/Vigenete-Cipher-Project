@@ -59,12 +59,17 @@ int main(){
             cin>>kl;
             cout<<"Enter First Word Length: ";
             cin>>fwdl;
-            Pass crack(ct, kl, fwdl);
-            auto start = chrono::high_resolution_clock::now();
-            crack.BruteForce();
-            auto stop = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::seconds>(stop-start);
-            cout<<"\nBrute force time taken: "<<duration.count()<<" seconds\n";
+            if(fwdl>1 && fwdl<16){
+                Pass crack(ct, kl, fwdl);
+                auto start = chrono::high_resolution_clock::now();
+                crack.BruteForce();
+                auto stop = chrono::high_resolution_clock::now();
+                auto duration = chrono::duration_cast<chrono::seconds>(stop-start);
+                cout<<"\nBrute force time taken: "<<duration.count()<<" seconds\n";
+            }
+            else {
+                cout<<"Valid first word lengths are 2-15. Try again."<<endl;
+            }
         }       
         else if(decision !=4){
             cout<<"Invalid option chosen, please try again.\n";
